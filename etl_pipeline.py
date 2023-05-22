@@ -4,10 +4,10 @@ import numpy as np
 from sqlalchemy import create_engine
 
 # load messages dataset
-messages = pd.read_csv('messages.csv')
+messages = pd.read_csv('Data/messages.csv')
 
 # load categories dataset
-categories = pd.read_csv('categories.csv')
+categories = pd.read_csv('Data/categories.csv')
 
 # merge datasets
 df = pd.merge(messages, categories, on='id')
