@@ -1,0 +1,1 @@
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QUse this notebook to complete \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q\nUse the template file attached in the Resources folder to write a script that runs the steps above to create a database and export a model based on a new dataset specified by the user.\\E$"}

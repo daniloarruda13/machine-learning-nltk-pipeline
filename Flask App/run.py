@@ -8,6 +8,7 @@ from nltk.tokenize import word_tokenize
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
+import plotly.graph_objects as Go
 import joblib
 from sqlalchemy import create_engine
 
@@ -15,6 +16,16 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 def tokenize(text):
+    """
+    Tokenizes a given text using the NLTK word tokenizer and lemmatizer, 
+    and returns a list of cleaned tokens.
+    
+    Args:
+    text (str): The text to tokenize.
+    
+    Returns:
+    list: A list of cleaned tokens.
+    """
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
@@ -39,16 +50,20 @@ model = joblib.load("models/final_model.pkl")
 def index():
     
     # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
-    genre_counts = df.groupby('genre').count()['message']
+    genre_counts = df.groupby('genre').count()['message'].sort_values(ascending=False)
     genre_names = list(genre_counts.index)
     
-    category_names = df.iloc[:, 4:].columns
-    category_counts = (df.iloc[:, 4:]!=0).sum()
-    
+    #Extract Data for Plots
+    category_counts = (df.iloc[:, 4:] != 0).sum().sort_values(ascending=False)
+    category_names= category_counts.index
+    # Calculate message lengths
+    message_word_counts =  df['message'].str.split().apply(len)
+
+    # df['word_count'] = message_word_counts
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
     graphs = [
+
+        #Creating simple bar graph with the number of messages per genrer
         {
             'data': [
                 Bar(
@@ -68,6 +83,7 @@ def index():
             }
         },
         
+        #Creating simple bar graph with the number of messages per category
         {
             'data': [
                 Bar(
@@ -85,8 +101,19 @@ def index():
                     'title': "Category"
                 }
             }
+        },
+
+        #Creating histogram of message lengths
+        {
+            'data': [
+                Go.Histogram(x=message_word_counts, nbinsx=100)
+            ],
+            'layout': {
+                'title': 'Distribution of Message Lengths',
+                'yaxis': {'title': 'Count'},
+                'xaxis': {'title': 'Amount of words'},
+            }
         }
-        
     ]
     
     # encode plotly graphs in JSON
