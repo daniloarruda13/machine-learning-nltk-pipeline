@@ -25,7 +25,7 @@ def import_data():
         pandas.DataFrame: The imported data.
     """
     # create engine to connect to the database
-    engine = create_engine('sqlite:///Data/DisastersProject.db')
+    engine = create_engine('sqlite:///data/DisastersProject.db')
 
     # read the data from the table 'Messages_Categories' into a pandas DataFrame
     df = pd.read_sql_table('Messages_Categories', engine)

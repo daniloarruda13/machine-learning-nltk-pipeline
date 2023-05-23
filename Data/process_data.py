@@ -52,5 +52,5 @@ ind_duplicates = df.duplicated('message')
 print(ind_duplicates.sum())
 
 #Saving as sql table to the working directory
-engine = create_engine('sqlite:///Data/DisastersProject.db')
+engine = create_engine('sqlite:///data/DisastersProject.db')
 df.to_sql('Messages_Categories', engine, index=False)

@@ -8,8 +8,8 @@ The project includes scripts written in Python and HTML. Also, the dataset are a
 
 ## File and Folder Descriptions
 
-1. Data: This folder contains the raw datasets (categories.csv and messages.csv) and the cleaned database (DisastersProject.db)
-2. Flask App: This folder is where the web app runs. It has a folder templates with the html scrips to run the application. Also, the Flask App has a python script (run.py) that should be used to trigger the application.
+1. Data: This folder contains the raw datasets (categories.csv and messages.csv), the cleaned database (DisastersProject.db) and the script used to process the data.
+2. app: This folder is where the web app runs. It has a folder templates with the html scrips to run the application. Also, the Flask App has a python script (run.py) that should be used to trigger the application.
 3. models: This folder contains the final model (final_model.pkl) and the python script in which the model has been trained and exported.
 4. screenshots: In this folder there are five screenshots of the web app. 
 5. ETL Pipeline Preparation.ipynb: This is a Jupyter notebook showing the data preparation step by step using ETL framework.
