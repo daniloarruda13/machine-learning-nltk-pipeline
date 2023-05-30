@@ -29,7 +29,7 @@ The project includes scripts written in Python and HTML. Also, the dataset are a
 ![Fig_5](/screenshots/classification_example.jpg){: width="400px" height="400px" align="center"}
 
 ## Disclaimer
-The template used in this document was not developed by me. It is based on a pre-existing template created by [Udacity](https://www.udacity.com/course/data-scientist-nanodegree--nd025). I have made modifications and additions to suit my needs, but the original structure and are virtually the same.
+The template used in this document was not developed by me. It is based on a pre-existing template created by [Udacity](https://www.udacity.com/course/data-scientist-nanodegree--nd025). I have made modifications and additions to suit my needs, but the original structure is virtually the same.
 
 
 
